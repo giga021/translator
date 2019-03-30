@@ -20,3 +20,8 @@
             .main-container .body-container .search-container input.search-box {
                 width: 100%;
             }
+
+        .main-container .body-container .search-result .search-label {
+            font-size: 20px;
+            font-weight: bold;
+        }

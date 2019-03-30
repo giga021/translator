@@ -1,7 +1,35 @@
 ﻿<div class="main-container">
     <div class="body-container">
         <div class="search-container">
-            <input autofocus class="search-box" />
+            <input autofocus class="search-box" id="search-box" />
+        </div>
+        <div class="search-result">
+            <span class="search-label">Translated text:</span>
+            <span id="translated"></span>
         </div>
     </div>
+
+    <script type="text/javascript">
+        var timer;
+        $("#search-box").on('input', function (e) {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/Search",
+                    data: {
+                        query: e.target.value
+                    },
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function onSuccess(data, status) {
+                        $('#translated').html(data.result);
+                    },
+                    error: function onError(xhr, status, error) {
+                        console.error('error', error);
+                    }
+                });
+            }, 3000);
+        });
+    </script>
 </div>
