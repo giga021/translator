@@ -6,7 +6,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Translator.Application;
 using Translator.Application.Services;
+using Translator.Domain.Repositories;
 using Translator.Infrastructure.Services;
+using Translator.Persistence.Repositories;
 using Translator.Properties;
 
 namespace Translator.App_Start
@@ -18,6 +20,8 @@ namespace Translator.App_Start
 			builder.RegisterInstance(TranslationClient.CreateFromApiKey(Settings.Default.GoogleTranslateKey));
 			builder.RegisterInstance(new TranslationSettings(Settings.Default.DefaultLanguageOutput));
 			builder.RegisterType<GoogleTranslateService>().As<ITranslateService>();
+			builder.Register(c => new TranslationRepository(Settings.Default.ConnectionString)).As<ITranslationRepository>();
+			builder.RegisterType<CachedTranslateService>().As<ICachedTranslateService>();
 		}
 
 		private static void ConfigureMvc()

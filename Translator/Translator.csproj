@@ -221,6 +221,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalApiExceptionHandler.cs" />
     <Compile Include="Models\SearchResultViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -290,9 +291,17 @@
       <Project>{5334335E-0F07-420C-9678-5CE58FF67EA8}</Project>
       <Name>Translator.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Translator.Domain\Translator.Domain.csproj">
+      <Project>{560DC0B5-41F3-47BF-812A-B85E6ACFA66A}</Project>
+      <Name>Translator.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Translator.Infrastructure\Translator.Infrastructure.csproj">
       <Project>{543FE469-A059-4F98-8C2A-5D50A0FD371F}</Project>
       <Name>Translator.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Translator.Persistence\Translator.Persistence.csproj">
+      <Project>{EAE9E580-0661-425B-A035-0F3A63521606}</Project>
+      <Name>Translator.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

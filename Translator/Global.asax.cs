@@ -21,5 +21,14 @@ namespace Translator
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			AutofacConfig.Configure();
 		}
+
+		protected void Application_Error(object sender, EventArgs e)
+		{
+			Exception exception = Server.GetLastError();
+			if (exception != null)
+			{
+				//log the error
+			}
+		}
 	}
 }

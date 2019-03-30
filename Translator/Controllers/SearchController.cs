@@ -9,9 +9,9 @@ namespace Translator.Controllers
 {
 	public class SearchController : ApiController
 	{
-		private readonly ITranslateService _translateSvc;
+		private readonly ICachedTranslateService _translateSvc;
 
-		public SearchController(ITranslateService translateSvc)
+		public SearchController(ICachedTranslateService translateSvc)
 		{
 			_translateSvc = translateSvc;
 		}

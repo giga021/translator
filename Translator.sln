@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator.Application", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator.Infrastructure", "Translator.Infrastructure\Translator.Infrastructure.csproj", "{543FE469-A059-4F98-8C2A-5D50A0FD371F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator.Domain", "Translator.Domain\Translator.Domain.csproj", "{560DC0B5-41F3-47BF-812A-B85E6ACFA66A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator.Persistence", "Translator.Persistence\Translator.Persistence.csproj", "{EAE9E580-0661-425B-A035-0F3A63521606}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{543FE469-A059-4F98-8C2A-5D50A0FD371F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{543FE469-A059-4F98-8C2A-5D50A0FD371F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{543FE469-A059-4F98-8C2A-5D50A0FD371F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{560DC0B5-41F3-47BF-812A-B85E6ACFA66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{560DC0B5-41F3-47BF-812A-B85E6ACFA66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{560DC0B5-41F3-47BF-812A-B85E6ACFA66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{560DC0B5-41F3-47BF-812A-B85E6ACFA66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE9E580-0661-425B-A035-0F3A63521606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE9E580-0661-425B-A035-0F3A63521606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE9E580-0661-425B-A035-0F3A63521606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE9E580-0661-425B-A035-0F3A63521606}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using Google.Cloud.Translation.V2;
 using System.Threading.Tasks;
 using Translator.Application;
+using Translator.Application.Dto;
 using Translator.Application.Services;
 
 namespace Translator.Infrastructure.Services
@@ -16,13 +17,13 @@ namespace Translator.Infrastructure.Services
 			_settings = settings;
 		}
 
-		public async Task<string> Translate(string query, string fromLanguage, string toLanguage)
+		public async Task<TranslateResult> Translate(string query, string fromLanguage, string toLanguage)
 		{
 			var response = await _client.TranslateTextAsync(
 				text: query,
 				targetLanguage: toLanguage ?? _settings.DefaultLanguageOutput,
 				sourceLanguage: fromLanguage);
-			return response.TranslatedText;
+			return new TranslateResult(response.TranslatedText, response.DetectedSourceLanguage, response.TargetLanguage);
 		}
 	}
 }
