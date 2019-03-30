@@ -23,7 +23,7 @@
                     contentType: "application/json",
                     dataType: "json",
                     success: function onSuccess(data, status) {
-                        $('#translated').html(data.result);
+                        $('#translated').html(data.TranslatedText);
                     },
                     error: function onError(xhr, status, error) {
                         console.error('error', error);

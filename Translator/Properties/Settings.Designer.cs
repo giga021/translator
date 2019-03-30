@@ -31,5 +31,14 @@ namespace Translator.Properties {
                 return ((string)(this["GoogleTranslateKey"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("fr")]
+        public string DefaultLanguageOutput {
+            get {
+                return ((string)(this["DefaultLanguageOutput"]));
+            }
+        }
     }
 }
