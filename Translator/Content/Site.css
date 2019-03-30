@@ -1,7 +1,11 @@
-﻿.main-container {
-    margin: 10px;
-    background-color: maroon;
+﻿body {
     height: 100vh;
+    padding: 10px;
+}
+
+.main-container {
+    background-color: maroon;
+    height: 100%;
     padding: 100px 5px 5px 5px;
 }
 
@@ -22,6 +26,9 @@
             }
 
         .main-container .body-container .search-result .search-label {
-            font-size: 20px;
             font-weight: bold;
+        }
+
+        .main-container .body-container .search-result {
+            font-size: 20px;
         }
