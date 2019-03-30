@@ -7,29 +7,61 @@
             <span class="search-label">Translated text:</span>
             <span id="translated"></span>
         </div>
+        <div class="footer">
+            <a id="btn-continue" class="btn btn-warning pull-right">OK - continue</a>
+        </div>
     </div>
 
     <script type="text/javascript">
         var timer;
-        $("#search-box").on('input', function (e) {
+        var translatedQuery;
+        var translatedResult;
+
+        function translateQuery(query, fnSuccess) {
+            if (translatedQuery === query) {
+                fnSuccess(translatedResult);
+                return;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/api/Search",
+                data: {
+                    query: query
+                },
+                contentType: "application/json",
+                dataType: "json",
+                success: function onSuccess(data, status) {
+                    translatedResult = data.TranslatedText;
+                    translatedQuery = query;
+                    if (fnSuccess)
+                        fnSuccess(translatedResult);
+                },
+                error: function onError(xhr, status, error) {
+                    console.error('error', error);
+                }
+            });
+        }
+
+        function navigateToResults(result) {
+            window.location.href = '@Url.Action("SearchResult")?translatedText=' + result;
+        }
+
+        $("#search-box").on('input paste', function (e) {
             clearTimeout(timer);
             timer = setTimeout(function () {
-                $.ajax({
-                    type: "GET",
-                    url: "/api/Search",
-                    data: {
-                        query: e.target.value
-                    },
-                    contentType: "application/json",
-                    dataType: "json",
-                    success: function onSuccess(data, status) {
-                        $('#translated').html(data.TranslatedText);
-                    },
-                    error: function onError(xhr, status, error) {
-                        console.error('error', error);
-                    }
-                });
+                translateQuery(e.target.value, function (result) {
+                    $('#translated').html(result);
+                })
             }, 3000);
         });
+
+        $("#btn-continue").click(function () {
+            clearTimeout(timer);
+            var val = $("#search-box").val();
+            translateQuery(val, function (result) {
+                navigateToResults(result);
+            });
+        })
     </script>
 </div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Translator.Models;
 
 namespace Translator.Controllers
 {
@@ -11,6 +12,12 @@ namespace Translator.Controllers
 		public ActionResult Index()
 		{
 			return View();
+		}
+
+		public ActionResult SearchResult(string translatedText)
+		{
+			var result = new SearchResultViewModel(translatedText);
+			return View(result);
 		}
 	}
 }
