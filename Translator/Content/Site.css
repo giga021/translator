@@ -32,3 +32,8 @@
         .main-container .body-container .search-result {
             font-size: 20px;
         }
+
+        .main-container .body-container .search-error {
+            color: red;
+            float: left;
+        }

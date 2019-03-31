@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -18,8 +19,18 @@ namespace Translator.Controllers
 
 		public async Task<HttpResponseMessage> Get(string query)
 		{
-			var result = await _translateSvc.Translate(query, null, null);
-			return Request.CreateResponse(HttpStatusCode.OK, new TranslateResult(result));
+			if (string.IsNullOrEmpty(query))
+				return Request.CreateResponse(HttpStatusCode.OK, new TranslateResult(string.Empty));
+
+			try
+			{
+				var result = await _translateSvc.Translate(query, null, null);
+				return Request.CreateResponse(HttpStatusCode.OK, new TranslateResult(result));
+			}
+			catch (Exception exc)
+			{
+				return Request.CreateErrorResponse(HttpStatusCode.BadRequest, exc.Message);
+			}
 		}
 	}
 }

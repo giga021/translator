@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -18,6 +19,13 @@ namespace Translator.Persistence.Repositories
 
 		public async Task<Translation> FindAsync(string query, string fromLanguage, string toLanguage)
 		{
+			if (string.IsNullOrEmpty(query))
+				throw new ArgumentNullException(nameof(query));
+			if (string.IsNullOrEmpty(fromLanguage))
+				throw new ArgumentNullException(nameof(fromLanguage));
+			if (string.IsNullOrEmpty(toLanguage))
+				throw new ArgumentNullException(nameof(toLanguage));
+
 			string sql = @"SELECT Data.query('for $t in /translations/translation			
 				where lower-case($t/from[1]) = lower-case(sql:variable(""@from""))
 				return $t') from Translations 
@@ -42,6 +50,9 @@ namespace Translator.Persistence.Repositories
 
 		public async Task AddAsync(Translation translation)
 		{
+			if (translation == null)
+				throw new ArgumentNullException(nameof(translation));
+
 			string sqlLanguagesExist = "SELECT COUNT(*) FROM Translations WHERE FromLanguage=@fromLanguage AND ToLanguage=@toLanguage";
 			string sqlNextId = @"SELECT NEXT VALUE FOR id_seq";
 			string sqlInsert = @"INSERT INTO Translations(FromLanguage, ToLanguage, Data) VALUES (@fromLanguage, @toLanguage, '<translations></translations>');";

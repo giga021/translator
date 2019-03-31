@@ -7,6 +7,9 @@
             <span class="search-label">Translated text:</span>
             <span id="translated"></span>
         </div>
+        <div class="search-error">
+            <span id="error"></span>
+        </div>
         <div class="footer">
             <a id="btn-continue" class="btn btn-warning pull-right">OK - continue</a>
         </div>
@@ -38,7 +41,7 @@
                         fnSuccess(translatedResult);
                 },
                 error: function onError(xhr, status, error) {
-                    console.error('error', error);
+                    $('#error').html('Error: ' + xhr.responseJSON.Message);
                 }
             });
         }
@@ -48,6 +51,7 @@
         }
 
         $("#search-box").on('input paste', function (e) {
+            $('#error').empty()
             clearTimeout(timer);
             timer = setTimeout(function () {
                 translateQuery(e.target.value, function (result) {
