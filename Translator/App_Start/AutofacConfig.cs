@@ -18,7 +18,7 @@ namespace Translator.App_Start
 		private static void AddApplicationServices(ContainerBuilder builder)
 		{
 			builder.RegisterInstance(TranslationClient.CreateFromApiKey(Settings.Default.GoogleTranslateKey));
-			builder.RegisterInstance(new TranslationSettings(Settings.Default.DefaultLanguageOutput));
+			builder.RegisterInstance(new TranslationSettings(Settings.Default.DefaultLanguageInput, Settings.Default.DefaultLanguageOutput));
 			builder.RegisterType<GoogleTranslateService>().As<ITranslateService>();
 			builder.Register(c => new TranslationRepository(Settings.Default.ConnectionString)).As<ITranslationRepository>();
 			builder.RegisterType<CachedTranslateService>().As<ICachedTranslateService>();

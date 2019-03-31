@@ -34,7 +34,7 @@ namespace Translator.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fr")]
+        [global::System.Configuration.DefaultSettingValueAttribute("FR")]
         public string DefaultLanguageOutput {
             get {
                 return ((string)(this["DefaultLanguageOutput"]));
@@ -49,6 +49,15 @@ namespace Translator.Properties {
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("EN")]
+        public string DefaultLanguageInput {
+            get {
+                return ((string)(this["DefaultLanguageInput"]));
             }
         }
     }

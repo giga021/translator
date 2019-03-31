@@ -19,7 +19,7 @@ namespace Translator.Persistence.Repositories
 		public async Task<Translation> FindAsync(string query, string fromLanguage, string toLanguage)
 		{
 			string sql = @"SELECT Data.query('for $t in /translations/translation			
-				where $t/from = sql:variable(""@from"")
+				where lower-case($t/from[1]) = lower-case(sql:variable(""@from""))
 				return $t') from Translations 
 				WHERE FromLanguage=@fromLanguage AND ToLanguage=@toLanguage";
 			using (var connection = new SqlConnection(_connectionString))
@@ -28,8 +28,8 @@ namespace Translator.Persistence.Repositories
 				using (var cmd = new SqlCommand(sql, connection))
 				{
 					cmd.Parameters.Add(new SqlParameter("from", query));
-					cmd.Parameters.Add(new SqlParameter("fromLanguage", fromLanguage ?? "EN"));
-					cmd.Parameters.Add(new SqlParameter("toLanguage", toLanguage ?? "FR"));
+					cmd.Parameters.Add(new SqlParameter("fromLanguage", fromLanguage.ToUpper()));
+					cmd.Parameters.Add(new SqlParameter("toLanguage", toLanguage.ToUpper()));
 					using (var reader = await cmd.ExecuteXmlReaderAsync())
 					{
 						var serializer = new XmlSerializer(typeof(Translation));

@@ -8,10 +8,12 @@ namespace Translator.Application
 {
 	public class TranslationSettings
 	{
+		public string DefaultLanguageInput { get; }
 		public string DefaultLanguageOutput { get; }
 
-		public TranslationSettings(string defaultLanguageOutput)
+		public TranslationSettings(string defaultLanguageInput, string defaultLanguageOutput)
 		{
+			DefaultLanguageInput = defaultLanguageInput;
 			DefaultLanguageOutput = defaultLanguageOutput;
 		}
 	}
