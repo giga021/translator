@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Translator.App_Start;
+using Translator.Persistence;
+using Translator.Properties;
 
 namespace Translator
 {
@@ -20,6 +22,7 @@ namespace Translator
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			AutofacConfig.Configure();
+			DatabaseInitializer.Init(Settings.Default.ConnectionString);
 		}
 
 		protected void Application_Error(object sender, EventArgs e)

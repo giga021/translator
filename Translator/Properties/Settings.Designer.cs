@@ -44,8 +44,8 @@ namespace Translator.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Translator;Persist Security Info=True;User " +
-            "ID=sa;Password=Pass@Word")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Translator6;Persist Security Info=True;User" +
+            " ID=sa;Password=Pass@Word")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
